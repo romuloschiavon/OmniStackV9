@@ -7,7 +7,7 @@ const SpotSchema = new mongoose.Schema({ //Saying what is the MongooseSchema for
     techs: [String], //Defining what technology it uses
     user: { //Defining what user is registering the Spot
         type: mongoose.Schema.Types.ObjectID,
-        ref: 'User';
+        ref: 'User'
     }
 });
 
