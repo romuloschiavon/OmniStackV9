@@ -1,8 +1,8 @@
-const multer = require('multer');
-const path = require('path');
+const multer = require('multer'); //Require multer
+const path = require('path'); //Require path
 
 module.exports = {
-    storage: multer.diskStorage({
+    storage: multer.diskStorage({ //Store the image in the uploads folder
         destination: path.resolve(__dirname, '..', '..', 'uploads'),
         filename: (req, file, cb) => {
             const ext = path.extname(file.originalname);
