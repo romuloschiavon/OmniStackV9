@@ -9,7 +9,7 @@ const routes = express.Router(); //Require express router functions
 const upload = multer(uploadConfig); //Using multer to config our upload
 
 routes.post('/sessions', SessionController.store); //Creating the login
-
+routes.get('/spots', upload.single('thumbnail'), SpotController.index); //Creating the filter for spots
 routes.post('/spots', upload.single('thumbnail'), SpotController.store); //Creating the spots
 
 module.exports = routes;

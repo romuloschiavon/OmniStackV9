@@ -11,4 +11,4 @@ const SpotSchema = new mongoose.Schema({ //Saying what is the MongooseSchema for
     }
 });
 
-module.exports = mongoose.model('User', SpotSchema); //Exporting the Schema, and it references Users!
+module.exports = mongoose.model('Spot', SpotSchema); //Exporting the Schema, and it references Users!
