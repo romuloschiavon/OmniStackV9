@@ -1,7 +1,7 @@
 const express = require('express'); //Requiring the main dependency Express
 const mongoose = require('mongoose'); //Require mongoose
-const cors = require('cors');
 const app = express(); //Defining our app!
+const cors = require('cors') //Requiring cors for API access
 const routes = require('./routes'); //Requiring our routes
 
 mongoose.connect('mongodb+srv://omnistacker:omnistacker@omnistackv9-tzs9q.mongodb.net/Week09?retryWrites=true&w=majority', {
