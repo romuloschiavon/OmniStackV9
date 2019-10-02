@@ -11,7 +11,10 @@ function App() {
     event.preventDefault();
     
     const response = await api.post('/sessions', { email });
-    console.log(response);
+    
+    const { _id } = response.data;
+
+    console.log(_id);
   }
 
   return (
