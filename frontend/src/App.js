@@ -1,9 +1,30 @@
 import React from 'react';
 import './App.css';
 
+import logo from './assets/logo.svg';
+
 function App() {
   return (
-    <h1>Hello!</h1>
+    <div className="container">
+      <img src={logo} alt="AirCnCLogo"/>
+
+      <div className="content">
+        <p>Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para sua empresa</p>
+
+        <form>
+          <label htmlFor="email">E-mail *</label>
+          <input 
+            id="email" 
+            type="email" 
+            placeholder="Seu melhor e-mail">
+          </input>
+          <button 
+            type="submit"
+            className="btn">Entrar
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
 
