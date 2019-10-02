@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import api from './services/api';
 import './App.css';
+import api from './services/api';
 
 import logo from './assets/logo.svg';
 
 function App() {
-  const [ email, setEmail ] = useState('');
+  const [email, setEmail] = useState('');
 
-  async function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
-    
-    const response = await api.post('/sessions', { email });
-    console.log(response);
+    console.log(email);
+
+
   }
 
   return (
@@ -24,17 +24,20 @@ function App() {
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">E-mail *</label>
           <input 
-            id="email"
-            type="email"
+            id="email" 
+            type="email" 
             placeholder="Seu melhor e-mail"
             value={email}
-            onChange={event => setEmail(event.target.value)}
-          />
-          <button className="btn" type="submit">Entrar</button>
+            onChange={event => setEmail(event.target.value)}>
+          </input>
+          <button 
+            type="submit"
+            className="btn">Entrar
+          </button>
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default App;
