@@ -14,4 +14,4 @@ const BookingSchema = new mongoose.Schema({ //Saying what is the MongooseSchema 
     
 });
 
-module.exports = mongoose.model('Spot', BookingSchema); //Exporting the Schema, and it references Users!
+module.exports = mongoose.model('Booking', BookingSchema); //Exporting the Schema, and it references Users!
