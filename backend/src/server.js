@@ -1,6 +1,5 @@
 const express = require('express'); //Requiring the main dependency Express
 const mongoose = require('mongoose'); //Require mongoose
-const cors = require('cors');
 const app = express(); //Defining our app!
 const routes = require('./routes'); //Requiring our routes
 
@@ -17,7 +16,6 @@ req.params = access route params for edition/deleting
 req.body = access body of the requisition for everything
 */
 
-app.use(cors());
 app.use(express.json());
 app.use(routes);
 
