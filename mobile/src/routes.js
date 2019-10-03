@@ -6,11 +6,11 @@ import List from './pages/List';
 import Book from './pages/Book';
 
 const Routes = createAppContainer(
-    createSwitchNavigator(
+    createSwitchNavigator({
         Login,
         List,
         Book
-    )
+    })
 );
 
 export default Routes;
