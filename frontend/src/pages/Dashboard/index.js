@@ -18,7 +18,7 @@ export default function Dashboard() {
         socket.on('booking_request', data => {
             setRequests([ ...requests, data ]);
         });
-    }, [requests, scoket]);
+    }, [requests, socket]);
 
 
     useEffect(() => { //useEffect for loading spots. Using our user_id!
