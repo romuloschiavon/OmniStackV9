@@ -3,7 +3,7 @@ const mongoose = require('mongoose'); //Require mongoose
 const cors = require('cors') //Requiring cors for API access
 const path = require('path') //Requiring path for IMG access
 const routes = require('./routes'); //Requiring our routes
-const dotenv = require('dotenv')//Require DotEnv
+const dotenv = require('dotenv');//Require DotEnv
 
 const socketio = require ('socket.io'); //Require socket io for socket connections.
 const http = require('http'); //Require http for backend sockets
@@ -14,7 +14,7 @@ const io = socketio(server); //Define our io for app.use next
 
 dotenv.config();
 
-mongoose.connect(process.env.Connection, {
+mongoose.connect(process.env.CON_PAS, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }); //Database Connection above
