@@ -10,7 +10,7 @@ export default function Dashboard() {
     const [ requests, setRequests ] = useState([]);//Defining our useState for requests
     
     const user_id = localStorage.getItem('user');
-    const socket = useMemo(() => socketio('http://localhost:3333', {
+    const socket = useMemo(() => socketio('http://192.168.0.110:3333', {
         query: { user_id } //Getting our user Id from our route
     }), [user_id]); //useMemo serves for we only are reconnecting a user when the user_id changes
 
@@ -23,30 +23,30 @@ export default function Dashboard() {
 
     useEffect(() => { //useEffect for loading spots. Using our user_id!
         async function loadSpots() {
-            const user_id = localStorage.getItem('user');
-            const response = await api.get('/dashboard', {
+            const user_id = localStorage.getItem('user'); //Get user ID 
+            const response = await api.get('/dashboard', { //Use user ID with our API to get the /dashboard
                 headers: { user_id }
             });
 
-            setSpots(response.data);
+            setSpots(response.data); //Execute async function
         }
 
-        loadSpots()
+        loadSpots() //Load the spots
     }, []);
     
     return (
         //Our return is indeed a HTML, with a unique key for each spot
         <>
             <ul className="notiications">
-                {requests.map( request => {
+                {requests.map( request => (
                     <li key={request._id}>
                         <p>
                             <strong>{request.user.email}</strong> requests a reservation @<strong>{request.spot.company}</strong> for the date: <strong>{request.date}</strong>
                         </p>
-                        <button>Accept</button>
-                        <button>Decline</button>
+                        <button className="accept">ACCEPT</button>
+                        <button className="decline">DECLINE</button>
                     </li>
-                })}
+                ))}
             </ul>
 
             <ul className="spot-list">

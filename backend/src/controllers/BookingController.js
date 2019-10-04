@@ -14,10 +14,10 @@ module.exports = {
 
         await booking.populate('spot').populate('user').execPopulate();
 
-        const ownerSocket = req.connectedUsers[booking.spot.user_id];
+        const ownerSocket = req.connectedUsers[booking.spot.user];
 
         if (ownerSocket) {
-            req.io.to(ownerSocket).emit('booking_request'. booking);
+            req.io.to(ownerSocket).emit('booking_request', booking);
         };
 
         return res.json(booking);

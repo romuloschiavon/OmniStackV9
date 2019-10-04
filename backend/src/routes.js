@@ -6,6 +6,8 @@ const SessionController = require('./controllers/SessionController'); //Require 
 const SpotController = require('./controllers/SpotController'); //Require controller for Spots
 const DashboardController = require('./controllers/DashboardController'); //Require controller for Spots
 const BookingController = require('./controllers/BookingController'); //Require controller for Bookings
+const ApprovalController = require('./controllers/ApprovalController'); //Require controller for approving bookings
+const RejectionController = require('./controllers/RejectionController'); //Require controller for declining bookings
 
 const routes = express.Router(); //Require express router functions
 const upload = multer(uploadConfig); //Using multer to config our upload
@@ -19,5 +21,8 @@ routes.post('/spots', upload.single('thumbnail'), SpotController.store); //Creat
 routes.get('/dashboard', DashboardController.show); //Creating the routes for the dashboard
 
 routes.post('/spots/:spot_id/bookings', BookingController.store); //Creating a booking inside our SPOT!
+
+routes.post('/bookings/:booking_id/approvals', ApprovalController.store);
+routes.post('/bookings/:booking_id/rejections', RejectionController.store);
 
 module.exports = routes;
