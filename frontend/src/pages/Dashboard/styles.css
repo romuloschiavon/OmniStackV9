@@ -29,3 +29,50 @@ ul.spot-list li span {
     font-size: 15px;
     color: #999;
 }
+
+ul.notifications {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+ul.notifications li {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+ul.notifications li button {
+    margin-right: 10px;
+    border: 0;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button.accept {
+    background-color: #fff;
+    color: #84c870;
+    margin-right: 10px;
+    border: 0;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button.accept:hover {
+    color: #76b164;
+}
+
+button.decline {
+    background: #fff;
+    color: #e55e5e;
+    margin-left: 10px;
+    border: 0;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button.decline:hover {
+    color: #c04c4c;
+}
