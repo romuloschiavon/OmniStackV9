@@ -33,6 +33,18 @@ export default function Dashboard() {
 
         loadSpots() //Load the spots
     }, []);
+
+    async function handleAccept(id) {
+        await api.post(`/bookings/${id}/approvals`);
+
+        setRequests(requests.filter(request => request._id !== id));
+    };
+    
+    async function handleReject(id) {
+        await api.post(`/bookings/${id}/rejections`)
+
+        setRequests(requests.filter(request => request._id !== id));
+    };
     
     return (
         //Our return is indeed a HTML, with a unique key for each spot
@@ -43,8 +55,8 @@ export default function Dashboard() {
                         <p>
                             <strong>{request.user.email}</strong> requests a reservation @<strong>{request.spot.company}</strong> for the date: <strong>{request.date}</strong>
                         </p>
-                        <button className="accept">ACCEPT</button>
-                        <button className="decline">DECLINE</button>
+                        <button className="accept" onClick={() => handleAccept(request._id)}>ACCEPT</button>
+                        <button className="decline" onClick={() => handleReject(request._id)}>DECLINE</button>
                     </li>
                 ))}
             </ul>
