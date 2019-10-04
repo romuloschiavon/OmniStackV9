@@ -24,7 +24,7 @@ export default function SpotList({ tech }) {
             <FlatList
                 style={styles.list}
                 data={spots}
-                keyExtractor={spot => spots._id}
+                keyExtractor={spot => spot._id}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (

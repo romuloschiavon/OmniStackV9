@@ -1,5 +1,9 @@
 {
   "expo": {
+    "androidStatusBar": {
+      "barstyle": "dark-content",
+      "backgroundColor": "#ffffff"
+    },
     "name": "AirCnC",
     "slug": "mobile",
     "privacy": "public",
@@ -25,6 +29,6 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
   }
 }

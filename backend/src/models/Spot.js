@@ -15,7 +15,7 @@ const SpotSchema = new mongoose.Schema({ //Saying what is the MongooseSchema for
 });
 
 SpotSchema.virtual('thumbnail_url').get(function() {
-    return `http://localhost:3333/files/${this.thumbnail}`
+    return `http://200.135.90.45:3333/files/${this.thumbnail}`
 });
 
 module.exports = mongoose.model('Spot', SpotSchema); //Exporting the Schema, and it references Users!
