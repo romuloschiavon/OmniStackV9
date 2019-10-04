@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import socketio from 'socket.io-client';
 
@@ -7,12 +7,18 @@ import './styles.css';
 
 export default function Dashboard() {
     const [spots, setSpots] = useState([]); //Defining our useState for spots
+    const [ requests, setRequests ] = useState([]);//Defining our useState for requests
+    
+    const user_id = localStorage.getItem('user');
+    const socket = useMemo(() => socketio('http://localhost:3333', {
+        query: { user_id } //Getting our user Id from our route
+    }), [user_id]); //useMemo serves for we only are reconnecting a user when the user_id changes
+
     useEffect(() => { //UseEffect that only eexecutes one time, it is, when the front end login successfully
-        const user_id = localStorage.getItem('user');
-        const socket = socketio('http://localhost:3333', {
-            query: { user_id } //Getting our user Id from our route
+        socket.on('booking_request', data => {
+            setRequests([ ...requests, data ]);
         });
-    }, []);
+    }, [requests, scoket]);
 
 
     useEffect(() => { //useEffect for loading spots. Using our user_id!
@@ -31,6 +37,18 @@ export default function Dashboard() {
     return (
         //Our return is indeed a HTML, with a unique key for each spot
         <>
+            <ul className="notiications">
+                {requests.map( request => {
+                    <li key={request._id}>
+                        <p>
+                            <strong>{request.user.email}</strong> requests a reservation @<strong>{request.spot.company}</strong> for the date: <strong>{request.date}</strong>
+                        </p>
+                        <button>Accept</button>
+                        <button>Decline</button>
+                    </li>
+                })}
+            </ul>
+
             <ul className="spot-list">
                 {spots.map(spot => (
                     <li key={spot._id}>
