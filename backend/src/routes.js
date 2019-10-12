@@ -1,9 +1,7 @@
 const express = require('express'); //Require express (necessary for everything!)
 const multer = require('multer'); //Require multer (necessary for images)
 const uploadConfig = require('./config/upload'); //Require our upload config
-const app = express();
 
-const AuthController = require('./controllers/AuthController'); //Require controller for creating auth
 const SessionController = require('./controllers/SessionController'); //Require controller for Sessions
 const SpotController = require('./controllers/SpotController'); //Require controller for Spots
 const DashboardController = require('./controllers/DashboardController'); //Require controller for Spots
@@ -12,8 +10,6 @@ const ApprovalController = require('./controllers/ApprovalController'); //Requir
 const RejectionController = require('./controllers/RejectionController'); //Require controller for declining bookings
 const routes = express.Router(); //Require express router functions
 const upload = multer(uploadConfig); //Using multer to config our upload
-
-AuthController(app); //Start auth
 
 routes.post('/sessions', SessionController.store); //Creating the login
 

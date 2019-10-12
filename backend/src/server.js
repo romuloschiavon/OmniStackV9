@@ -51,4 +51,6 @@ app.use(bodyParser.urlencoded({ extended: false })); //Use urlencoded without ex
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads'))); //Routes for images
 app.use(routes); //Routes
 
+require('./controllers/AuthController')(app);
+
 server.listen(3333); //Server listen
