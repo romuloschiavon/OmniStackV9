@@ -46,10 +46,11 @@ req.body = access body of the requisition for everything
 
 app.use(cors()); //Using cors for acess to the database
 app.use(express.json()); //Using express.json because our connections and datas comes in json 
-app.use(bodyParser.json()); //Using bodyParser.son
+app.use(bodyParser.json()); //Using bodyParser.json
 app.use(bodyParser.urlencoded({ extended: false })); //Use urlencoded without extended
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads'))); //Routes for images
 app.use(routes); //Routes
 
+require('./controllers/AuthController')(app);
 
 server.listen(3333); //Server listen
