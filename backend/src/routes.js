@@ -8,7 +8,7 @@ const DashboardController = require('./controllers/DashboardController'); //Requ
 const BookingController = require('./controllers/BookingController'); //Require controller for Bookings
 const ApprovalController = require('./controllers/ApprovalController'); //Require controller for approving bookings
 const RejectionController = require('./controllers/RejectionController'); //Require controller for declining bookings
-
+z
 const routes = express.Router(); //Require express router functions
 const upload = multer(uploadConfig); //Using multer to config our upload
 

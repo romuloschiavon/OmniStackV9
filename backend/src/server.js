@@ -4,6 +4,7 @@ const cors = require('cors') //Requiring cors for API access
 const path = require('path') //Requiring path for IMG access
 const routes = require('./routes'); //Requiring our routes
 const dotenv = require('dotenv');//Require DotEnv
+const bodyParser = require('body-parser'); //BodyParser for JWT Authentication
 
 const socketio = require ('socket.io'); //Require socket io for socket connections.
 const http = require('http'); //Require http for backend sockets
@@ -16,8 +17,9 @@ dotenv.config();
 
 mongoose.connect(process.env.CON_PAS, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-}); //Database Connection above
+    useUnifiedTopology: true,
+});
+mongoose.Promise = global.Promise;
 
 const connectedUsers = {}; //Used for saying what is the true user id
 
@@ -44,6 +46,8 @@ req.body = access body of the requisition for everything
 
 app.use(cors()); //Using cors for acess to the database
 app.use(express.json()); //Using express.json because our connections and datas comes in json 
+app.use(bodyParser.json()); //Using bodyParser.son
+app.use(bodyParser.urlencoded({ extended: false })); //Use urlencoded without extended
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads'))); //Routes for images
 app.use(routes); //Routes
 
